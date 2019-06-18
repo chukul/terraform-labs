@@ -29,7 +29,7 @@ resource "azurerm_network_security_rule" "AllowSSH" {
 resource "azurerm_network_security_rule" "AllowRDP" {
     name = "AllowSSH"
     resource_group_name         = "${azurerm_resource_group.nsgs.name}"
-    network_security_group_name = "${azurerm_network_security_group.resource_group_default.name}"
+    network_security_group_name = "${azurerm_network_security_group.nic_windows.name}"
 
     priority                    = 1110
     access                      = "Allow"
