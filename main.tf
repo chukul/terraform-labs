@@ -8,18 +8,12 @@ provider "aws" {
 
 # VPC
 resource "aws_vpc" "terra_vpc" {
-  cidr_block       = "${var.vpc_cidr}"
-  tags {
-    Name = "TerraVPC"
-  }
+  cidr_block       = var.vpc_cidr
 }
 
 # Internet Gateway
 resource "aws_internet_gateway" "terra_igw" {
   vpc_id = "${aws_vpc.terra_vpc.id}"
-  tags {
-    Name = "main"
-  }
 }
 
 # Subnets : public
@@ -28,9 +22,6 @@ resource "aws_subnet" "public" {
   vpc_id = "${aws_vpc.terra_vpc.id}"
   cidr_block = "${element(var.subnets_cidr,count.index)}"
   availability_zone = "${element(var.azs,count.index)}"
-  tags {
-    Name = "Subnet-${count.index+1}"
-  }
 }
 
 # Route table: attach Internet Gateway 
@@ -39,9 +30,6 @@ resource "aws_route_table" "public_rt" {
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.terra_igw.id}"
-  }
-  tags {
-    Name = "publicRouteTable"
   }
 }
 
