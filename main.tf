@@ -42,3 +42,26 @@ resource "aws_route_table_association" "a" {
   subnet_id      = element(aws_subnet.public.*.id,count.index)
   route_table_id = aws_route_table.public_rt.id
 }
+
+resource "aws_network_interface" "ec2_nic" {
+  subnet_id   = aws_subnet.public.id
+  private_ips = ["10.20.1.10"]
+
+  tags = {
+    Name = "primary_network_interface"
+  }
+}
+
+resource "aws_instance" "ec2_vm" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  network_interface {
+    network_interface_id = aws_network_interface.ec2_nic.id
+    device_index         = 0
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
