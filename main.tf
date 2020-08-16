@@ -46,7 +46,7 @@ resource "aws_route_table_association" "a" {
 resource "aws_network_interface" "ec2_nic" {
   count = length(var.private_ips)
   subnet_id      = element(aws_subnet.public.*.id,count.index)
-  private_ips = element(var.private_ips,count.index)
+  private_ips = ["10.20.1.10"]
 
   tags = {
     Name = "primary_network_interface"
