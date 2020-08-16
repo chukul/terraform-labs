@@ -26,6 +26,20 @@ resource "aws_subnet" "public" {
   vpc_id = aws_vpc.terra_vpc.id
   cidr_block = element(var.subnets_cidr,count.index)
   availability_zone = element(var.azs,count.index)
+  tags = {
+    Name = "public_subnet"
+  }
+}
+
+# Subnets : private
+resource "aws_subnet" "private" {
+  count = length(var.private_subnets_cidr)
+  vpc_id = aws_vpc.terra_vpc.id
+  cidr_block = element(var.private_subnets_cidr,count.index)
+  availability_zone = element(var.azs,count.index)
+  tags = {
+    Name = "private_subnets"
+  }
 }
 
 # Route table: attach Internet Gateway 
