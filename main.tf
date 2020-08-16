@@ -44,7 +44,7 @@ resource "aws_route_table_association" "a" {
   route_table_id = aws_route_table.public_rt.id
 }
 
-/*
+
 resource "aws_network_interface" "ec2_nic" {
   count = length(var.subnets_cidr)-1
   subnet_id      = element(aws_subnet.public.*.id,count.index)
@@ -54,6 +54,7 @@ resource "aws_network_interface" "ec2_nic" {
     Name = "primary_network_interface"
   }
 }
+/*
 
 resource "aws_instance" "ec2_vm" {
   ami           = "ami-08569b978cc4dfa10" # us-west-2
