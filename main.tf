@@ -44,7 +44,8 @@ resource "aws_route_table_association" "a" {
 }
 
 resource "aws_network_interface" "ec2_nic" {
-  subnet_id   = aws_subnet.public.id
+  count = length(var.subnets_cidr)
+  subnet_id      = element(aws_subnet.public.*.id,count.index)
   private_ips = ["10.20.1.10"]
 
   tags = {
