@@ -6,6 +6,7 @@ provider "aws" {
   secret_key = var.secret_access_key
 }
 
+/*
 # VPC
 resource "aws_vpc" "terra_vpc" {
   cidr_block       = var.vpc_cidr
@@ -66,3 +67,4 @@ resource "aws_instance" "ec2_vm" {
     cpu_credits = "unlimited"
   }
 }
+*/
