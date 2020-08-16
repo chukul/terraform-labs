@@ -9,7 +9,9 @@ provider "aws" {
 # VPC
 resource "aws_vpc" "terra_vpc" {
   cidr_block       = var.vpc_cidr
-  name = "terra_vpc"
+    tags = {
+    Name = "MyVPC"
+  }
 }
 
 # Internet Gateway
