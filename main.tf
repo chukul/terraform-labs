@@ -58,7 +58,7 @@ resource "aws_instance" "ec2_vm" {
   instance_type = "t2.micro"
 
   network_interface {
-    network_interface_id = aws_network_interface.ec2_nic.id
+    network_interface_id = aws_network_interface.ec2_nic[0].id
     device_index         = 0
   }
 
