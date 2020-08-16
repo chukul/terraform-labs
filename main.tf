@@ -6,7 +6,7 @@ provider "aws" {
   secret_key = var.secret_access_key
 }
 
-/*
+
 # VPC
 resource "aws_vpc" "terra_vpc" {
   cidr_block       = var.vpc_cidr
@@ -44,6 +44,7 @@ resource "aws_route_table_association" "a" {
   route_table_id = aws_route_table.public_rt.id
 }
 
+/*
 resource "aws_network_interface" "ec2_nic" {
   count = length(var.subnets_cidr)-1
   subnet_id      = element(aws_subnet.public.*.id,count.index)
