@@ -45,6 +45,7 @@ module "vote_service_sg" {
 
   ingress_cidr_blocks      = ["172.25.0.0/16","172.24.0.0/16","10.102.0.0/16","206.1.1.0/24","206.1.2.0/24","192.168.0.0/16"]
   ingress_rules            = ["all-all"]
+  egress_rules             = ["all-all"]
   # ingress_with_cidr_blocks = [
   #   {
   #     from_port   = 8080
