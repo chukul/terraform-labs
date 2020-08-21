@@ -60,3 +60,22 @@ module "vote_service_sg" {
   #   },
   # ]
 }
+
+module "ec2_cluster" {
+  source                 = "terraform-aws-modules/ec2-instance/aws"
+  version                = "~> 2.0"
+
+  name                   = "my-cluster"
+  instance_count         = 1
+
+  ami                    = "ami-097e78d10c4722996"
+  instance_type          = "t2.micro"
+  key_name               = "tli-keypair"
+  monitoring             = true
+  vpc_security_group_ids = [module.vote_service_sg.this_security_group_id]
+  subnet_id              = module.vpc.private_subnets[0]
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
