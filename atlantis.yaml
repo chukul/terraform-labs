@@ -6,7 +6,6 @@ projects:
     when_modified: ["*.tf", "vars/development.tfvars"]
   execution_order_group: 1
   workspace: development
-  workflow: infra
 - name: staging
   dir: .
   autoplan:
@@ -14,7 +13,6 @@ projects:
   depends_on: ["development"]
   execution_order_group: 2
   workspace: staging
-  workflow: infra
 - name: production
   dir: .
   autoplan:
@@ -22,4 +20,3 @@ projects:
   depends_on: ["staging"]
   execution_order_group: 3
   workspace: production
-  workflow: infra
