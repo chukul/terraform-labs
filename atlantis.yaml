@@ -9,7 +9,7 @@ projects:
   #workflow: custom-workflow
 - name: staging
   dir: staging
-  autoplan:
+  autoplan: 
     when_modified: ["*.tf", "vars/staging.tfvars"]
   execution_order_group: 2
   workspace: staging
