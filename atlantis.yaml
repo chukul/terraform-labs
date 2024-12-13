@@ -6,15 +6,30 @@ projects:
     when_modified: ["*.tf", "vars/development.tfvars"]
   execution_order_group: 1
   workspace: development
+  #workflow: custom-workflow
 - name: staging
   dir: staging
-  autoplan:
+  autoplan: 
     when_modified: ["*.tf", "vars/staging.tfvars"]
   execution_order_group: 2
   workspace: staging
+  #workflow: custom-workflow
 - name: production
   dir: production
   autoplan:
     when_modified: ["*.tf", "vars/production.tfvars"]
   execution_order_group: 3
   workspace: production
+  #workflow: custom-workflow
+workflows:
+  custom-workflow:
+    plan:
+      steps:
+        - init:
+            extra_args: ["-backend-config=key=labs/${atlantis.workspace}/terraform.tfstate"]
+        - plan
+    apply:
+      steps:
+        - init:
+            extra_args: ["-backend-config=key=labs/${atlantis.workspace}/terraform.tfstate"]
+        - apply
