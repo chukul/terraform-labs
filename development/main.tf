@@ -4,7 +4,7 @@ terraform {
     region         = "ap-southeast-1"                 # Replace with your bucket region
     encrypt        = true                        # Enable encryption
   }
-}
+} 
 
 provider "aws" {
   region = "ap-southeast-1" # Replace with your desired region
