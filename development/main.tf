@@ -29,7 +29,7 @@ resource "aws_ebs_volume" "example" {
 
 resource "aws_ebs_volume" "example2" {
   availability_zone = "ap-southeast-1a" # Replace with your desired availability zone
-  size              = 10               # Size in GB
+  size              = 15               # Size in GB
   type              = "gp3"            # General Purpose SSD (gp2)
 
   tags = {
