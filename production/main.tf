@@ -8,7 +8,7 @@ resource "aws_ebs_volume" "example" {
   type              = "gp3"            # General Purpose SSD (gp2)
 
   tags = {
-    Name = "example-ebs-volume"
+    Name = "prod-example-ebs-volume"
     map-migrated = "migJL95TU4VS9"
     CostCenter = "Engineering"
     Env = "CCoE"
