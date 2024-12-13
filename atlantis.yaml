@@ -10,13 +10,11 @@ projects:
   dir: staging
   autoplan:
     when_modified: ["*.tf", "vars/staging.tfvars"]
-  depends_on: ["development"]
   execution_order_group: 2
   workspace: staging
 - name: production
   dir: production
   autoplan:
     when_modified: ["*.tf", "vars/production.tfvars"]
-  depends_on: ["staging"]
   execution_order_group: 3
   workspace: production
