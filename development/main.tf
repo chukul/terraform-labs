@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "my-terraform-state-bucket-atlantis"  # Replace with your bucket name
-    key            = "terraform.tfstate"         # Path to the state file in the bucket
+    key            = "labs/${terraform.workspace}/terraform.tfstate"         # Path to the state file in the bucket
     region         = "ap-southeast-1"                 # Replace with your bucket region
     encrypt        = true                        # Enable encryption
   }
