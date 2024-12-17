@@ -33,3 +33,4 @@ workflows:
         - init:
             extra_args: ["-backend-config=key=labs/${atlantis.workspace}/terraform.tfstate"]
         - apply
+        
