@@ -18,15 +18,3 @@ projects:
     when_modified: ["*.tf", "vars/production.tfvars"]
   workspace: production
   #workflow: custom-workflow
-workflows:
-  custom-workflow:
-    plan:
-      steps:
-        - init:
-            extra_args: ["-backend-config=key=labs/${atlantis.workspace}/terraform.tfstate"]
-        - plan
-    apply:
-      steps:
-        - init:
-            extra_args: ["-backend-config=key=labs/${atlantis.workspace}/terraform.tfstate"]
-        - apply
