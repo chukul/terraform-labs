@@ -24,6 +24,7 @@ resource "aws_ebs_volume" "example" {
     Owner = "Sre-Team"
     EmailCreator = "chuchai.k@cimbthai.com"
     ProjectName = "Pool"
+    POC = "TRUE"
   }
 }
 resource "aws_ebs_volume" "example2" {
