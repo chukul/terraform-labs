@@ -5,6 +5,9 @@ projects:
   autoplan:
     when_modified: ["*.tf", "vars/development.tfvars"]
   workspace: development
+  apply_requirements:
+      - approved
+      - mergeable
   #workflow: custom-workflow
 - name: staging
   dir: staging
