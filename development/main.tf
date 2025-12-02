@@ -1,14 +1,13 @@
-terraform {
-  backend "s3" {
-    bucket         = "my-terraform-state-bucket-atlantis"  # Replace with your bucket name
-    key            = "terraform.tfstate"         # Path to the state file in the bucket
-    region         = "ap-southeast-1"                 # Replace with your bucket region
-    encrypt        = true                        # Enable encryption
-  }
+resource "random_pet" "server" {
+  length = 2
 }
 
-provider "aws" {
-  region = "ap-southeast-1" # Replace with your desired region
+resource "random_string" "suffix" {
+  length  = 8
+  special = false
+  upper   = false
 }
 
-# add atlantis comment to dev
+output "server_name" {
+  value = "${random_pet.server.id}-${random_string.suffix.result}"
+}
